@@ -49,8 +49,8 @@ export class MerchantsService {
     // return await this.merchantRepo.save(merchant);
   }
 
-  findAll() {
-    return `This action returns all merchants`;
+  async findAll() {
+    return await this.merchantRepo.find();
   }
 
   async findOne(id: string) {

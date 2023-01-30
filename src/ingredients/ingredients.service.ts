@@ -17,8 +17,9 @@ export class IngredientsService {
     return await this.ingredientRepo.save(ingredient);
   }
 
-  findAll() {
-    return `This action returns all ingredients`;
+  async findAll() {
+    const ingredients = await this.ingredientRepo.find();
+    return ingredients;
   }
 
   findOne(id: number) {

@@ -23,8 +23,8 @@ export class SidesService {
     return "side";
   }
 
-  findAll() {
-    return `This action returns all sides`;
+  async findAll() {
+    return await this.sideRepo.find();
   }
 
   findOne(id: number) {

@@ -23,8 +23,8 @@ export class MembershipService {
     }
   }
 
-  findAll() {
-    return `This action returns all membership`;
+  async findAll() {
+    return await this.membershipRepo.find();
   }
 
   async findOne(id: string) {

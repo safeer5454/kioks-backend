@@ -40,8 +40,9 @@ export class CategoriesService {
     // return "upload";
   }
 
-  findAll() {
-    return `This action returns all categories`;
+  async findAll() {
+    const categories = await this.categoryRepo.find();
+    return categories;
   }
 
   findOne(id: number) {

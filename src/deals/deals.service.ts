@@ -27,8 +27,9 @@ export class DealsService {
     return await this.dealRepo.save(deal);
   }
 
-  findAll() {
-    return `This action returns all deals`;
+  async findAll() {
+    const deals = await this.dealRepo.find();
+    return deals;
   }
 
   async findOne(id: string) {

@@ -17,8 +17,9 @@ export class ExtrasService {
     return await this.extraRepo.save(extra);
   }
 
-  findAll() {
-    return `This action returns all extras`;
+  async findAll() {
+    const extras = await this.extraRepo.find();
+    return extras;
   }
 
   async findOne(id: string) {

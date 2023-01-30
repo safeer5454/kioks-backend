@@ -20,8 +20,9 @@ export class BranchService {
     return "Branches created successfully";
   }
 
-  findAll() {
-    return `This action returns all branch`;
+  async findAll() {
+    const branches = await this.branchRepo.find();
+    return branches;
   }
 
   async find(merchantId: string) {

@@ -18,8 +18,8 @@ export class KioskService {
   }
 
   async findAll() {
-    const kioks = await this.kioskRepo.find();
-    return `This action returns all kiosk`;
+    const kiosks = await this.kioskRepo.find();
+    return kiosks;
   }
 
   async findOne(id: string) {
