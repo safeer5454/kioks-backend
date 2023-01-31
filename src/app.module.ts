@@ -16,6 +16,8 @@ import { DealsModule } from "./deals/deals.module";
 import { SidesModule } from "./sides/sides.module";
 import { ExtrasModule } from "./extras/extras.module";
 import { IngredientsModule } from "./ingredients/ingredients.module";
+import { ServeStaticModule } from "@nestjs/serve-static";
+import { join } from "path";
 
 @Module({
   imports: [
@@ -30,6 +32,9 @@ import { IngredientsModule } from "./ingredients/ingredients.module";
       autoLoadEntities: true,
       synchronize: true,
       logging: true,
+    }),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, "..", "files"),
     }),
     UserModule,
     MulterModule.register({ dest: "./uploads" }),
