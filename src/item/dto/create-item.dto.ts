@@ -1,5 +1,11 @@
 import { Type } from "class-transformer";
-import { IsBoolean, IsEnum, IsNumber, IsString } from "class-validator";
+import {
+  IsBoolean,
+  IsEnum,
+  IsNumber,
+  IsObject,
+  IsString,
+} from "class-validator";
 import { Category } from "src/categories/entities/category.entity";
 import { CATEGORY_TYPE, ITEM_TYPE, SIZE_TYPE } from "src/common/enums";
 import { Extra } from "src/extras/entities/extra.entity";
@@ -17,8 +23,8 @@ export class CreateItemDto {
   category: Category;
   @IsBoolean()
   mostSelling: boolean;
-  @IsEnum(SIZE_TYPE)
-  size: SIZE_TYPE;
+  @IsObject()
+  size: Record<any, any>;
   @IsBoolean()
   status: boolean;
   @Type(() => Extra)

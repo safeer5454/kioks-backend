@@ -23,16 +23,14 @@ export class Item {
   image: string;
   @Column()
   name: string;
-  @Column()
-  price: number;
   @ManyToOne(() => Category, (category) => category.id)
   category: Category;
   @ManyToMany(() => Side, (side) => side.items)
   sides: Side[];
   @Column({ default: false, nullable: true })
   mostSelling: boolean;
-  @Column({ type: "enum", enum: SIZE_TYPE })
-  size: SIZE_TYPE; //will be remove in future and add three column for L,M,S size
+  @Column({ type: "jsonb" })
+  size: Record<any, any>;
   @Column({ default: true, nullable: true })
   status: boolean;
   @ManyToMany(() => Deal, (deal) => deal.items)
