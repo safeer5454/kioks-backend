@@ -49,25 +49,25 @@ export class ItemController {
     return this.itemService.findOne(id);
   }
 
-  // @Patch(":id")
-  // @UseInterceptors(
-  //   FileInterceptor("image", {
-  //     storage: diskStorage({
-  //       destination: "./files",
-  //       filename(req, file, callback) {
-  //         const formatedName = `${file.originalname}-item`;
-  //         callback(null, formatedName);
-  //       },
-  //     }),
-  //   })
-  // )
-  // update(
-  //   @Param("id") id: string,
-  //   @UploadedFile() image: Express.Multer.File,
-  //   @Body() updateItemDto: UpdateItemDto
-  // ) {
-  //   return this.itemService.update(id, image?.filename, updateItemDto);
-  // }
+  @Patch(":id")
+  @UseInterceptors(
+    FileInterceptor("image", {
+      storage: diskStorage({
+        destination: "./files",
+        filename(req, file, callback) {
+          const formatedName = `${file.originalname}-item`;
+          callback(null, formatedName);
+        },
+      }),
+    })
+  )
+  update(
+    @Param("id") id: string,
+    @UploadedFile() image: Express.Multer.File,
+    @Body() updateItemDto: UpdateItemDto
+  ) {
+    return this.itemService.update(id, image?.filename, updateItemDto);
+  }
 
   @Delete(":id")
   remove(@Param("id") id: string) {

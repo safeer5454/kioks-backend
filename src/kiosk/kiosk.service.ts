@@ -26,7 +26,9 @@ export class KioskService {
     const kiosk = await this.kioskRepo.findOne({
       where: { id },
       relations: {
-        categories: { items: { category: true } },
+        categories: {
+          items: { category: true, ingredients: true, extras: true },
+        },
         branch: true,
         side: { items: true },
         deal: { items: true },
